@@ -1,6 +1,18 @@
 <?php
 include 'connect.php';
+if(isset($_POST['submit'])){
+  $product=$_POST['productName'];
+  $stocksN=$_POST['stocks'];
 
+  $sql="insert into `crud` (productName,stocks)
+  values('$product','$stocksN')";
+  $result=mysqli_query($con,$sql);
+  if($result){
+      echo "Data Inserted Successfully";
+  }else{
+      die(mysqli_error($con));
+  }
+}
 ?>
 
 
@@ -29,7 +41,7 @@ include 'connect.php';
 <div class="mb-3">
     <label>Number of Stocks</label>
     <input type="text" class="form-control"
-    placeholder="Enter Number of Stocks" name="numStocks">
+    placeholder="Enter Number of Stocks" name="stocks">
 </div>
   <button type="submit" class="btn btn-primary"name="submit">Submit</button>
 </form>
