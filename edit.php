@@ -1,15 +1,16 @@
 <?php
 include 'connect.php';
+$itemNum=$_GET['edit'];
 if(isset($_POST['submit'])){
   $product=$_POST['productName'];
   $stocksN=$_POST['stocks'];
 
-  $sql="insert into `crud` (productName,stocks)
-  values('$product','$stocksN')";
+  $sql="update `crud` set itemNum=$itemNum,productName='$product',stocks='$stocksN'
+  where itemNum=$itemNum";
   $result=mysqli_query($con,$sql);
   if($result){
-      //echo "Data Inserted Successfully";
-      header('location:mainDisplay.php');
+      echo "Data updated Successfully";
+      //header('location:mainDisplay.php');
   }else{
       die(mysqli_error($con));
   }
@@ -44,7 +45,7 @@ if(isset($_POST['submit'])){
     <input type="text" class="form-control"
     placeholder="Enter Number of Stocks" name="stocks">
 </div>
-  <button type="submit" class="btn btn-primary"name="submit">Submit</button>
+  <button type="submit" class="btn btn-primary"name="submit">Update</button>
 </form>
     </div>
 
