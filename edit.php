@@ -9,8 +9,8 @@ if(isset($_POST['submit'])){
   where itemNum=$itemNum";
   $result=mysqli_query($con,$sql);
   if($result){
-      echo "Data updated Successfully";
-      //header('location:mainDisplay.php');
+      //echo "Data updated Successfully";
+      header('location:mainDisplay.php');
   }else{
       die(mysqli_error($con));
   }
